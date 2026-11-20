@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Slow Drifter</title>
+<meta name="description" content="A calm, endless drive through procedural hills, forests, snow and desert with storms, aurora and nitro. Free and open source.">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#16202e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Slow Drifter">
+<meta property="og:description" content="A calm, endless drive through procedural hills, forests, snow and desert. No score, no timer.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Fraunces:opsz,wght@9..144,500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="c" role="img" aria-label="Endless road driving scene"></canvas>
+
+  <div class="ov" id="menu">
+    <div class="panel">
+      <h1>Slow Drifter</h1>
+      <p class="tag">An endless, quiet road. No score, no timer, no finish line. Pick a speed and let the hills roll by.</p>
+      <div class="keys">
+        <div><b>Steer</b>A and D, or the arrow keys. On touch, hold the left or right side of the screen.</div>
+        <div><b>Speed</b>W or Up to speed up, S or Down to slow down. The car holds its speed.</div>
+        <div><b>Autopilot</b>Press Space and just watch the scenery.</div>
+        <div><b>Boost</b>Hold Shift to burn nitro. Grab the gold orbs on the road to refill it.</div>
+        <div><b>Traffic</b>Cars drive both ways. Overtake and near-miss for cash, and avoid crashes.</div>
+        <div><b>Levels</b>Reach the distance goal to get paid, then spend it in the garage (G) on faster cars.</div>
+        <div><b>More</b>R weather, T time of day, C camera, V next car, M sound, H hide the display, P menu.</div>
+      </div>
+      <p class="best" id="menuBest"></p>
+      <div class="row">
+        <button class="btn" id="startBtn" type="button">Start driving</button>
+        <button class="btn alt" id="garBtn" type="button">Garage</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ov" id="pause" hidden>
+    <div class="panel">
+      <h2>Paused</h2>
+      <div class="opts">
+        <button class="opt" id="oWeather" type="button"></button>
+        <button class="opt" id="oTime" type="button"></button>
+        <button class="opt" id="oAuto" type="button"></button>
+        <button class="opt" id="oSound" type="button"></button>
+        <button class="opt" id="oCam" type="button"></button>
+        <button class="opt" id="oCar" type="button"></button>
+        <button class="opt" id="oGarage" type="button">Open garage</button>
+        <button class="opt" id="oQuality" type="button"></button>
+      </div>
+      <button class="btn" id="resumeBtn" type="button">Keep driving</button>
+    </div>
+  </div>
+
+  <div class="ov" id="garage" hidden>
+    <div class="panel wide">
+      <h2>Garage</h2>
+      <p class="best" id="garMoney"></p>
+      <div class="cars" id="carList"></div>
+      <button class="btn" id="garClose" type="button">Back</button>
+    </div>
+  </div>
+
+  <div id="pad">
+    <button type="button" id="slower" aria-label="Slow down">Slower</button>
+    <button type="button" id="faster" aria-label="Speed up">Faster</button>
+    <button type="button" id="boostBtn" aria-label="Boost">Boost</button>
+    <button type="button" id="menuBtn" aria-label="Menu">Menu</button>
+  </div>
+  <div class="sr" id="live" role="status" aria-live="polite"></div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
